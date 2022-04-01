@@ -10,7 +10,7 @@ const isValidRequestBody = function (requestBody) {
     return Object.keys(requestBody).length > 0
 }
 
-const create_Emp= async function (req, res) {
+const create_Emp = async function (req, res) {
     try {
         const requestBody = req.body
         
@@ -40,3 +40,24 @@ const create_Emp= async function (req, res) {
     }
 }
 module.exports.create_Emp = create_Emp
+
+
+
+const getemp = async function (req, res) {
+    try {
+        let body = req.query;
+        
+        let foundemp = await empModel.find(body).sort({emp_name:1})
+        if (foundemp) {
+            res.status(200).send({ status: true, data: foundemp });
+        }
+        else {
+            res.status(400).send({ status: false, msg: "No documents found" });
+        }
+    }
+    catch (err) {
+        res.status(500).send({ msg: "Some error occured" });
+    }
+}
+
+module.exports.getemp = getemp
