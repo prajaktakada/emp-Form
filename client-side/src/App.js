@@ -20,11 +20,6 @@ function App() {
    <Create/>
    </Route>
 
-   <Route path="/edit">
-   <Edit/>
-   </Route>
-     
-   
      </>
    )
   
